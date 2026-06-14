@@ -1101,7 +1101,7 @@ if(window.location.search.includes('cliente')) {
   document.getElementById('tab-row').style.display='none';
   switchTab('c');
 }
-loadClients();  
+if(window.location.search.includes('cliente')){document.getElementById('tab-row').style.display='none';switchTab('c');}
 </script>
 </body>
 </html>
