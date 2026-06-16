@@ -242,7 +242,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <div class="logo-title">Keri <em>Docs</em></div>
       <div class="logo-sub">Document Portal</div>
     </div>
-    <div class="tab-row" id="tab-row">
+    <div class="tab-row">
       <button class="tab-btn active" id="tab-a" onclick="switchTab('a')">Administrador</button>
       <button class="tab-btn" id="tab-c" onclick="switchTab('c')">Cliente</button>
     </div>
@@ -1093,15 +1093,7 @@ if('serviceWorker' in navigator){
     var blob=new Blob([code],{type:'application/javascript'});
     navigator.serviceWorker.register(URL.createObjectURL(blob))
       .catch(function(e){console.log('SW:',e);});
-  });
-}
-
-// ═══ INIT ═══
-if(window.location.search.includes('cliente')) {
-  document.getElementById('tab-row').style.display='none';
-  switchTab('c');
-}
-if(window.location.search.includes('cliente')){document.getElementById('tab-row').style.display='none';switchTab('c');}
+:index.html
 </script>
 </body>
 </html>
