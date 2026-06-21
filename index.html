@@ -663,7 +663,7 @@ function renderDashboard() {
   document.getElementById('a-stats').innerHTML=`
     <div class="stat"><div class="stat-n">${DB.clients.length}</div><div class="stat-l">Clientes activos</div></div>
     <div class="stat"><div class="stat-n">${tf}</div><div class="stat-l">Carpetas</div></div>
-    <div class="stat"><div class="stat-n">${td}</div><div class="stat-l">Documentos</div></div>`;
+    <div class="stat"><div class="stat-n">${td}</div><div class="stat-l">Documentos<button class="btn btn-d btn-sm" style="margin-top:8px;width:100%" onclick="event.stopPropagation();delClient('${c.id}')">🗑 Eliminar cliente</button></div></div>`;
   document.getElementById('a-quick').innerHTML=DB.clients.map(c=>ccHtml(c)).join('');
 }
 
@@ -694,7 +694,7 @@ function ccHtml(c) {
       <span class="badge">📁 ${Object.keys(c.folders).length}</span>
       <span class="badge">📄 ${nd}</span>
       ${c.passChanged?'<span class="badge" style="background:rgba(86,211,100,0.1);color:var(--success);border-color:rgba(86,211,100,0.2)">✓ Pass cambiada</span>':'<span class="badge" style="background:rgba(227,179,65,0.1);color:#E3B341;border-color:rgba(227,179,65,0.2)">⚠ Pass inicial</span>'}
-    </div></div>`;
+    <button class="btn btn-d btn-sm" style="margin-top:8px;width:100%" onclick="event.stopPropagation();delClient('${c.id}')">🗑 Eliminar cliente</button></div></div>`;
 }
 
 async function addClient() {
