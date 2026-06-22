@@ -472,8 +472,7 @@ let S = {role:null, cid:null, fid:null, file:null};
 let DB = {adminPass:'keri2025', clients:[]};
 
 // ═══ FIREBASE DB ═══
-function delClient(cid){confirm2('¿Eliminar este cliente y todos sus documentos?',async()=>{const client=DB.clients.find(c=>c.id===cid);for(const fid of Object.keys(client.folders)){await dbDelFolder(cid,fid);}await db.collection('clients').doc(cid).delete();DB.clients=DB.clients.filter(c=>c.id!==cid);renderClients();renderSBClients();renderDashboard();populateSelect();toast('Cliente eliminado correctamente','ok');});}
-async function addClient() {
+async function loadClients() {
   try {
     const snap = await db.collection('clients').orderBy('name').get();
     if(snap.empty) {
@@ -695,7 +694,7 @@ function ccHtml(c) {
       <span class="badge">📁 ${Object.keys(c.folders).length}</span>
       <span class="badge">📄 ${nd}</span>
       ${c.passChanged?'<span class="badge" style="background:rgba(86,211,100,0.1);color:var(--success);border-color:rgba(86,211,100,0.2)">✓ Pass cambiada</span>':'<span class="badge" style="background:rgba(227,179,65,0.1);color:#E3B341;border-color:rgba(227,179,65,0.2)">⚠ Pass inicial</span>'}
-    </div></div>`;
+    <button class="btn btn-d btn-sm" style="margin-top:8px;width:100%" onclick="event.stopPropagation();delClient('${c.id}')">🗑 Eliminar cliente</button></div></div>`;
 }
 
 async function addClient() {
