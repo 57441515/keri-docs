@@ -697,7 +697,7 @@ function ccHtml(c) {
     <button class="btn btn-d btn-sm" style="margin-top:8px;width:100%" onclick="event.stopPropagation();delClient('${c.id}')">🗑 Eliminar cliente</button></div></div>`;
 }
 
-async function addClient() {
+function delClient(cid){confirm2('¿Eliminar este cliente y todos sus documentos?',async()=>{const client=DB.clients.find(c=>c.id===cid);for(const fid of Object.keys(client.folders)){await dbDelFolder(cid,fid);}await db.collection('clients').doc(cid).delete();DB.clients=DB.clients.filter(c=>c.id!==cid);renderClients();renderSBClients();renderDashboard();populateSelect();toast('Cliente eliminado','ok');});} async function addClient() {
   const name=document.getElementById('nc-n').value.trim();
   const email=document.getElementById('nc-e').value.trim();
   const pass=document.getElementById('nc-p').value.trim();
