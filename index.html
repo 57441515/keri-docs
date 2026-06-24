@@ -290,11 +290,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="sidebar" id="sb-c">
       <div class="sb-sec">
         <div class="sb-lbl">Mis documentos</div>
-        <button class="sb-btn on" onclick="showClientFolders()"><span class="ic">🏠</span>Inicio</button>
+        <button type="button" class="sb-btn on" onclick="showClientFolders()"><span class="ic">🏠</span>Inicio</button>
       </div>
       <div class="sb-sec" id="sb-cf"></div>
       <div class="sb-sec" style="margin-top:auto;padding-top:16px;border-top:1px solid var(--border)">
-        <button class="sb-btn" onclick="openModal('mo-chpass')"><span class="ic">🔑</span>Cambiar contraseña</button>
+        <button type="button" class="sb-btn" onclick="openModal('mo-chpass')"><span class="ic">🔑</span>Cambiar contraseña</button>
       </div>
     </div>
 
@@ -642,7 +642,7 @@ function goAdmin(id) {
     b.classList.toggle('on',(i===0&&id==='dashboard')||(i===1&&id==='clients'));
   });
   if(id==='clients') renderClients();
-  if(id==='dashboard') renderDashboard();
+  if(id==='dashboard') renderDashboard(); closeSB(); // asegurar cierre del sidebar en móvil }
 }
 
 function toggleSB() {
