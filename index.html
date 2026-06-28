@@ -637,7 +637,7 @@ function showPg(id) {
 }
 
 function goAdmin(id) {
-  closeSB();showPg(id);
+  showPg(id);
   document.querySelectorAll('#sb-a .sb-btn').forEach((b,i)=>{
     b.classList.toggle('on',(i===0&&id==='dashboard')||(i===1&&id==='clients'));
   });
