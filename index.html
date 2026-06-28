@@ -631,10 +631,11 @@ function logout() {
 
 // ═══ NAVIGATION ═══
 function showPg(id) {
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
-  document.getElementById('pg-'+id)?.classList.add('on');
-  closeSB();
-}
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+    var el=document.getElementById('pg-'+id);
+    if(el) el.classList.add('on');
+    closeSB();
+  }
 
 function goAdmin(id) {
   showPg(id);
